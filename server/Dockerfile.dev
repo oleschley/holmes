@@ -1,0 +1,15 @@
+FROM python:3.8.5-buster
+
+EXPOSE 5000
+
+ENV FLASK_APP "server"
+ENV FLASK_ENV "development"
+ENV FLASK_DEBUG True
+
+WORKDIR /server
+
+COPY ./src .
+
+RUN pip install -r requirements.txt
+
+CMD [ "flask", "run", "--host=0.0.0.0" ]
